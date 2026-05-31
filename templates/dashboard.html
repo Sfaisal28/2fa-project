@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2FA Security Dashboard</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(-45deg,#0f172a,#1e293b,#2563eb,#0ea5e9);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+    color:white;
+    overflow-x:hidden;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    background:rgba(0,0,0,0.25);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    margin-left:20px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#00ffcc;
+}
+
+.marquee{
+    width:100%;
+    overflow:hidden;
+    white-space:nowrap;
+    margin-top:20px;
+}
+
+.marquee span{
+    display:inline-block;
+    font-size:30px;
+    font-weight:bold;
+    color:#00ffcc;
+    animation:moveText 15s linear infinite;
+}
+
+@keyframes moveText{
+    from{transform:translateX(-100%);}
+    to{transform:translateX(100vw);}
+}
+
+.container{
+    text-align:center;
+    padding:30px;
+}
+
+.hero-title{
+    font-size:42px;
+    margin-top:20px;
+}
+
+.hero-subtitle{
+    margin-top:10px;
+    font-size:18px;
+}
+
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    margin-top:40px;
+}
+
+.card{
+    width:260px;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.05);
+    box-shadow:0 0 25px cyan;
+}
+
+.card h2{
+    margin-bottom:10px;
+}
+
+.video-section{
+    margin-top:50px;
+}
+
+#videoTitle{
+    cursor:pointer;
+    color:#00ffcc;
+    transition:.3s;
+}
+
+#videoTitle:hover{
+    transform:scale(1.05);
+    text-shadow:0 0 15px cyan;
+}
+
+#myVideo{
+    display:none;
+    width:85%;
+    max-width:950px;
+    margin-top:25px;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(0,255,255,.5);
+}
+
+.query-box{
+    margin-top:50px;
+}
+
+.query-box input{
+    width:60%;
+    max-width:700px;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    outline:none;
+    font-size:16px;
+}
+
+.query-box button{
+    padding:15px 25px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:#00ffcc;
+    font-weight:bold;
+    margin-left:10px;
+}
+
+.about{
+    margin-top:60px;
+    background:rgba(255,255,255,0.1);
+    padding:30px;
+    border-radius:20px;
+}
+
+.footer{
+    margin-top:50px;
+    padding:20px;
+    background:rgba(0,0,0,0.3);
+}
+html{
+    scroll-behavior:smooth;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+```
+<div class="logo">
+    🔐 2FA Dashboard
+</div>
+
+<div class="nav-links">
+    <a href="#">Dashboard</a>
+    <a href="#authentication">Authentication</a>
+    <a href="#security">Security</a>
+    <a href="#profile">Profile</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact Us</a>
+    <a href="#ask">Ask Anything</a>
+</div>
+```
+
+</div>
+
+<div class="marquee">
+    <span>
+Welcome Syed! Secure Your Account With Two-Factor Authentication • Welcome Syed! Secure Your Account With Two-Factor Authentication
+    </span>
+</div>
+
+<div class="container">
+
+```
+<h1 class="hero-title">
+   Access Granted!!!🔓
+   Welcome to 2FA Security Dashboard
+</h1>
+
+<p class="hero-subtitle">
+    Learn, Understand and Experience Two-Factor Authentication Security.
+</p>
+
+<div class="cards">
+
+    <div class="card">
+        <h2>📊 Dashboard</h2>
+        <p>Monitor user activities and security insights.</p>
+    </div>
+
+    <div class="card">
+        <h2>🔑 Authentication</h2>
+        <p>Verify users securely using password and OTP.</p>
+    </div>
+
+    <div class="card">
+        <h2>🛡 Security</h2>
+        <p>Protect accounts against unauthorized access.</p>
+    </div>
+
+    <div class="card">
+        <h2>👤 Profile</h2>
+        <p>Manage your personal account information.</p>
+    </div>
+
+</div>
+
+<div class="video-section">
+
+    <h2 id="videoTitle" onclick="playVideo()">
+        ▶ Do You Want To Watch A Video For Understanding 2FA?
+    </h2>
+
+    <video id="myVideo" controls>
+        <source src="{{ url_for('static', filename='videos/2fa_explanation.mp4') }}" type="video/mp4">
+        Your browser does not support video.
+    </video>
+
+</div>
+
+
+<section id="authentication" class="about">
+
+```
+<h2>🔑 Authentication</h2>
+<br>
+
+<p>
+    Authentication is the process of verifying the identity of a user.
+    In this Two-Factor Authentication system, users must enter their
+    username and password before proceeding to OTP verification.
+</p>
+
+<br>
+
+<p>
+    Once the password is verified, a One-Time Password (OTP) is sent
+    to the registered email address or mobile device.
+</p>
+
+<br>
+
+<p>
+    The user must enter the correct OTP to gain access to the account.
+    This additional verification step significantly improves security.
+</p>
+
+<br>
+
+<h3>2FA Authentication Flow</h3>
+
+<p>
+    Username + Password
+    ↓
+    Password Verification
+    ↓
+    Receive OTP
+    ↓
+    Enter OTP
+    ↓
+    Access Granted
+</p>
+```
+
+</section>
+<section id="security" class="about">
+
+```
+<h2>🛡 Security</h2>
+<br>
+
+<p>
+    Security is one of the most important aspects of any online system.
+    Two-Factor Authentication (2FA) adds an extra layer of protection
+    beyond a traditional password.
+</p>
+
+<br>
+
+<p>
+    Even if an attacker steals a user's password, access cannot be
+    granted without the One-Time Password (OTP) sent to the user's
+    registered device.
+</p>
+
+<br>
+
+<h3>Benefits of 2FA Security</h3>
+
+<p>
+    ✔ Prevents unauthorized access<br>
+    ✔ Protects user accounts from password theft<br>
+    ✔ Reduces the risk of phishing attacks<br>
+    ✔ Provides an additional verification layer<br>
+    ✔ Improves overall account security
+</p>
+
+<br>
+
+<h3>Security Workflow</h3>
+
+<p>
+    User Login<br>
+    ↓<br>
+    Password Verification<br>
+    ↓<br>
+    OTP Verification<br>
+    ↓<br>
+    Secure Access Granted
+</p>
+```
+
+</section>
+<section id="profile" class="about">
+
+```
+<h2>👤 Profile</h2>
+<img src="{{ url_for('static', filename='images/profile.jpg') }}"
+     alt="Profile Photo"
+     width="150"
+     height="150"
+     style="
+        border-radius:50%;
+        border:4px solid #00ffcc;
+        margin-top:15px;
+        margin-bottom:20px;
+        object-fit:cover;
+     ">
+<br>
+
+<h3>Personal Information</h3>
+<br>
+
+<p><strong>Name:</strong> Syed Faisal</p>
+<p><strong>Course:</strong> Master of Computer Applications (MCA)& Bachelor of Computer Application(BCA)</p>
+<p><strong>Specialization:</strong> Cybersecurity</p>
+<p><strong>Project:</strong> Two-Factor Authentication System</p>
+
+<br>
+
+<h3>Technical Skills</h3>
+<br>
+
+<p>
+    Python • SQL • Linux • Networking • Cybersecurity Fundamentals •
+    Wireshark • Authentication Systems • Problem Solving
+</p>
+
+<br>
+
+<h3>Project Objective</h3>
+<br>
+
+<p>
+    This project demonstrates how Two-Factor Authentication (2FA)
+    enhances account security by combining password-based login
+    with OTP verification to prevent unauthorized access.
+</p>
+```
+
+</section>
+
+<div class="about">
+
+
+    <p>
+        <section id="about" class="about">
+
+```
+<h2>ℹ About Us</h2>
+<br>
+
+<p>
+    Welcome to the Two-Factor Authentication (2FA) Security Dashboard.
+    This project has been developed to demonstrate how modern authentication
+    systems enhance account security using OTP-based verification.
+</p>
+
+<br>
+
+<h3>🎯 Project Objective</h3>
+
+<p>
+    The primary objective of this project is to provide an additional
+    security layer beyond traditional password-based authentication.
+    By implementing OTP verification, the system helps prevent
+    unauthorized access and improves user account protection.
+</p>
+
+<br>
+
+<h3>🚀 Key Features</h3>
+
+<p>
+    ✔ User Login Authentication<br>
+    ✔ OTP Verification System<br>
+    ✔ Enhanced Security Protection<br>
+    ✔ User-Friendly Dashboard<br>
+    ✔ Cybersecurity Awareness
+</p>
+
+<br>
+
+<h3>👨‍💻 Developed By</h3>
+
+<p>
+    Syed<br>
+    MCA Student<br>
+    Cybersecurity Enthusiast
+</p>
+```<section id="contact" class="about">
+</section>
+```
+<h2>📞 Contact Us</h2>
+<br>
+
+<p>
+    If you have any questions, suggestions, or feedback regarding
+    this Two-Factor Authentication (2FA) project, feel free to contact us.
+</p>
+
+<br>
+
+<h3>📧 Email</h3>
+<p>saec0441@gmail.com</p>
+
+<br>
+
+<h3>📱 Phone</h3>
+<p>+91 8938009795</p>
+
+<br>
+
+<h3>📍 Location</h3>
+<p> Agra, U.P.282001</p>
+
+<br>
+
+<h3>🔐 Terms of Services</h3>
+<p>Two-Factor Authentication (2FA) Security Dashboard</p>
+```</section>
+<div class="query-box">
+
+
+<section id="ask" class="about">
+
+    <h2>🤖 Ask Anything</h2>
+
+    <p>
+        Have questions about Two-Factor Authentication,
+        cybersecurity or OTP verification?
+        Submit your query below.
+    </p>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div style="
+                background:green;
+                color:white;
+                padding:10px;
+                border-radius:10px;
+                margin-bottom:20px;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+   <form action="/submit_query" method="POST">
+
+    <input type="text"
+           name="name"
+           placeholder="Enter Your Full Name"
+           required
+           style="width:80%;padding:12px;border:none;border-radius:10px;margin:10px;">
+
+    <br>
+
+    <input type="email"
+           name="email"
+           placeholder="Enter Your Email Address"
+           required
+           style="width:80%;padding:12px;border:none;border-radius:10px;margin:10px;">
+
+    <br>
+
+    <input type="tel"
+           name="contact"
+           placeholder="Enter Your Contact Number"
+           required
+           style="width:80%;padding:12px;border:none;border-radius:10px;margin:10px;">
+
+    <br>
+
+    <textarea
+            name="query"
+            rows="6"
+            placeholder="Type or Paste Your Query Here..."
+            required
+            style="width:80%;padding:12px;border:none;border-radius:10px;margin:10px;"></textarea>
+
+    <br>
+
+    <button type="submit"
+            style="padding:12px 30px;
+                   border:none;
+                   border-radius:10px;
+                   background:#00ffcc;
+                   font-weight:bold;
+                   cursor:pointer;">
+        Submit Query
+    </button>
+
+</form>
+
+</section>
+
+
+</section>
+
+
+</div>
+```
+
+</div>
+
+<div class="footer">
+    © 2026 Two-Factor Authentication Project | Cyber Security Dashboard
+</div>
+
+<script>
+
+function playVideo(){
+
+    const video=document.getElementById("myVideo");
+    const title=document.getElementById("videoTitle");
+
+    video.style.display="block";
+    title.style.display="none";
+
+    video.play();
+}
+
+</script>
+
+</body>
+</html>
