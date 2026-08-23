@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Verify OTP</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+          rel='stylesheet'>
+</head>
+
+<body>
+
+<div class="auth-wrapper">
+
+    <div class="credentials-panel signin">
+
+        <form action="/verify" method="POST">
+
+            <h2 class="slide-element">Verify OTP</h2>
+
+            <p class="otp-info">
+                Enter the OTP sent to your mobile number.
+            </p>
+
+            <div class="field-wrapper slide-element">
+
+                <input
+                    type="text"
+                    name="otp"
+                    maxlength="6"
+                    pattern="[0-9]{6}"
+                    inputmode="numeric"
+                    required>
+
+                <label>Enter OTP</label>
+
+                <i class='bx bxs-lock-alt'></i>
+
+            </div>
+
+            <p id="timer" class="otp-timer">
+                OTP expires in 60 seconds
+            </p>
+
+            <button type="submit"
+                    class="submit-button slide-element">
+                Verify OTP
+            </button>
+
+        </form>
+
+        <form action="/resend-otp" method="POST" id="resendForm">
+
+            <button type="submit"
+                    id="resendButton"
+                    class="resend-button"
+                    disabled>
+                Resend OTP
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+let timeLeft = 60;
+
+const timer = document.getElementById("timer");
+const resendButton = document.getElementById("resendButton");
+
+const countdown = setInterval(function () {
+
+    timer.innerText =
+        "OTP expires in " + timeLeft + " seconds";
+
+    timeLeft--;
+
+    if (timeLeft < 0) {
+
+        clearInterval(countdown);
+
+        timer.innerText = "OTP expired";
+
+        resendButton.disabled = false;
+
+        resendButton.innerText = "Resend OTP";
+    }
+
+}, 1000);
+
+</script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

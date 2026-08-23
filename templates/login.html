@@ -1,9 +1,10 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>2FA Login</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -22,10 +23,10 @@
             <h2 class="slide-element">Login</h2>
 
             <div class="field-wrapper slide-element">
-                <input type="text" name="username" required>
-                <label>Username</label>
-                <i class='bx bxs-user'></i>
-            </div>
+    <input type="email" name="username" required autocomplete="email">
+    <label>Email</label>
+    <i class='bx bxs-envelope'></i>
+</div>
 
             <div class="field-wrapper slide-element">
                 <input type="password" name="password" required>
@@ -36,6 +37,12 @@
             <button type="submit" class="submit-button slide-element">
                 Login
             </button>
+
+            <!-- Register Option -->
+            <p class="auth-link slide-element">
+                Don't have an account?
+                <a href="{{ url_for('register') }}">Create Account</a>
+            </p>
 
         </form>
 

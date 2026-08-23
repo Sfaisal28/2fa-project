@@ -155,3 +155,170 @@ body{
         left: -100%;
     }
 }
+/* ==============================
+   REGISTER / AUTH PAGE
+================================ */
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 430px;
+    padding: 35px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.auth-box h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.auth-subtitle {
+    text-align: center;
+    opacity: 0.7;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    background: rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+.input-group input:focus {
+    border-color: #00d9ff;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-link a {
+    text-decoration: none;
+    font-weight: bold;
+}
+.auth-link {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.auth-link a {
+    margin-left: 5px;
+    text-decoration: none;
+    font-weight: 600;
+}
+.otp-info {
+    text-align: center;
+    margin: 15px 0 25px;
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.otp-timer {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.resend-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.resend-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* ==========================================
+   OTP PAGE FIX
+========================================== */
+
+.otp-info {
+    color: #ffffff;
+    text-align: center;
+    margin: 15px 0 25px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* OTP Timer */
+.otp-timer {
+    color: #ffffff;
+    text-align: center;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+/* OTP input text */
+.field-wrapper input[type="text"],
+.field-wrapper input[type="tel"] {
+    color: #ffffff;
+}
+
+/* OTP input placeholder/label */
+.field-wrapper input[type="text"] + label,
+.field-wrapper input[type="tel"] + label {
+    color: #ffffff;
+}
+
+/* OTP icon */
+.field-wrapper i {
+    color: #ffffff;
+}
+
+/* Resend button */
+.resend-button {
+    color: #ffffff;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.resend-button:not(:disabled):hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.resend-button:disabled {
+    color: rgba(255, 255, 255, 0.5);
+}

@@ -3,71 +3,61 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>OTP Verification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            min-height:100vh;
-            background:#0f172a;
-            font-family:Poppins;
-        }
+    <title>2FA Verification</title>
 
-        .box{
-            width:350px;
-            padding:40px;
-            background:#111827;
-            border:2px solid #00d4ff;
-            box-shadow:0 0 20px #00d4ff;
-            border-radius:20px;
-            text-align:center;
-        }
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 
-        h2{
-            color:#00d4ff;
-            margin-bottom:20px;
-        }
-
-        input{
-            width:100%;
-            padding:12px;
-            margin:20px 0;
-            background:transparent;
-            border:2px solid #00d4ff;
-            color:#fff;
-            border-radius:10px;
-        }
-
-        button{
-            width:100%;
-            padding:12px;
-            background:#00d4ff;
-            border:none;
-            border-radius:10px;
-            cursor:pointer;
-            font-weight:bold;
-        }
-    </style>
-
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+          rel='stylesheet'>
 </head>
 
 <body>
 
-<div class="box">
+<div class="auth-wrapper">
 
-    <h2>Enter OTP</h2>
+    <div class="credentials-panel signin">
 
-    <form action="/verify" method="POST">
+        <form action="/send-otp" method="POST">
 
-        <input type="text" name="otp" placeholder="Enter OTP" required>
+            <h2 class="slide-element">2FA Verification</h2>
 
-        <button type="submit">Verify OTP</button>
+            <p class="otp-info">
+                Enter your mobile number to receive a verification OTP.
+            </p>
 
-    </form>
+            <div class="field-wrapper slide-element">
+
+                <input
+                    type="tel"
+                    name="mobile"
+                    id="mobile"
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                    required>
+
+                <label>Mobile Number</label>
+
+                <i class='bx bxs-phone'></i>
+
+            </div>
+
+            <button type="submit"
+                    class="submit-button slide-element">
+
+                Send OTP
+
+            </button>
+
+        </form>
+
+    </div>
 
 </div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 
